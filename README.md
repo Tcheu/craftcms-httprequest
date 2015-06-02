@@ -106,3 +106,11 @@ Return value:
 
 	{ "cv": (UploadFile) }
 
+## Cache
+
+We use Craft's caching system to store the responses. The TTL is of 1 hour per default, but this value can be changed using the `setCacheTtl` method.
+
+## Session handling
+
+As this plugin was mainly created with the idea to query REST API, the session handling is not really at its best.
+We create a single CookieJar in memory that remains during the whole Craft request.
