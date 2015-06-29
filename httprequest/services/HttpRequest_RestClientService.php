@@ -130,9 +130,11 @@ class HttpRequest_RestClientService extends BaseApplicationComponent
 
 		//Should we try to get the results from cache?
 		$getFromCache = (isset($options['fromCache'])) ? $options['fromCache'] : true;
+
+		//Obtain the cache id
+		$cacheId = $this->_getCacheId($method, $url, $requestParams);
+
 		if( $getFromCache ) {
-			//Obtain the cache id
-			$cacheId = $this->_getCacheId($method, $url, $requestParams);
 
 			//Check if the response has already been cached
 			if( $cachedResult = craft()->cache->get($cacheId) ) {
