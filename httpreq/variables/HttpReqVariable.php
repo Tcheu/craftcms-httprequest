@@ -1,6 +1,6 @@
 <?php namespace Craft;
 
-class HttpRequestVariable
+class HttpReqVariable
 {
 	/**
 	 * Interface to the service's get method
@@ -13,7 +13,7 @@ class HttpRequestVariable
 	 */
 	public function get($url, $params = [], $fromCache = true)
 	{
-		$response = craft()->httpRequest_restClient->get($url, $params, $fromCache);
+		$response = craft()->httpReq_restClient->get($url, $params, $fromCache);
 		return $response;
 	}
 
@@ -22,7 +22,7 @@ class HttpRequestVariable
 	 */
 	public function post($url, $params = [], $files = [])
 	{
-		$response = craft()->httpRequest_restClient->post($url, $params, $files);
+		$response = craft()->httpReq_restClient->post($url, $params, $files);
 		return $response;
 	}
 
@@ -64,6 +64,6 @@ class HttpRequestVariable
 	 */
 	public function setCacheTtl($ttl)
 	{
-		craft()->httpRequest_restClient->setCacheTtl($ttl);
+		craft()->httpReq_restClient->setCacheTtl($ttl);
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Craft;
 
-class HttpRequestPlugin extends BasePlugin
+class HttpReqPlugin extends BasePlugin
 {
 	private $_name = 'HTTP Request';
 	private $_developer = 'Tcheu!';

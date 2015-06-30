@@ -4,13 +4,13 @@ Create and send HTTP requests and retrieve the response, in JSON or plain text.
 
 ## Installation
 
-1. Copy the "httprequest" directory into "craft/plugins".
+1. Copy the "httpreq" directory into "craft/plugins".
 2. Open the control panel and go to "Settings > Plugins".
 3. Install the "HTTP Request" plugin.
 
 ## Usage
 
-Once the plugin has been installed, you may access it through the "craft.httprequest" variable in the templates.
+Once the plugin has been installed, you may access it through the "craft.httpReq" variable in the templates.
 Here is an overview of the available methods:
 
 ### get
@@ -25,7 +25,7 @@ Parameters:
 
 Example:
 
-	craft.httprequest.get('http://domain.com/api/test', { "lang" : "fr" }, false)
+	craft.httpReq.get('http://domain.com/api/test', { "lang" : "fr" }, false)
 
 This code will try to make a GET request to http://domain.com/api/test?lang=fr without trying to get the response from cache.
 
@@ -48,7 +48,7 @@ Parameters:
 
 Example:
 
-	craft.httprequest.post('http://domain.com/api/test', { "fname" : "John", "lname" : "Doe" }, { "cv": (UploadFile) })
+	craft.httpReq.post('http://domain.com/api/test', { "fname" : "John", "lname" : "Doe" }, { "cv": (UploadFile) })
 
 This code will try to make a POST request to http://domain.com/api/test with the following parameters encoded using multipart/form-data: fname, lname, cv. The value for the CV parameter is the content of the file.
 
@@ -70,7 +70,7 @@ Parameters:
 
 Example:
 
-	craft.httprequest.setCacheTtl(60)
+	craft.httpReq.setCacheTtl(60)
 
 This will define a cache validity time of 1 minute for all further requests.
 
@@ -84,7 +84,7 @@ Parameters:
 
 Example:
 
-	craft.getParams(['fname','lname'])
+	craft.httpReq.getParams(['fname','lname'])
 
 Return value:
 
@@ -100,7 +100,7 @@ Parameters:
 
 Example:
 
-	craft.getFiles(['cv'])
+	craft.httpReq.getFiles(['cv'])
 
 Return value:
 

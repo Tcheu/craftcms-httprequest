@@ -6,7 +6,7 @@ use Guzzle\Plugin\Cookie\Cookie;
 use Guzzle\Plugin\Cookie\CookiePlugin;
 use Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar;
 
-class HttpRequest_RestClientService extends BaseApplicationComponent
+class HttpReq_RestClientService extends BaseApplicationComponent
 {
 	//Default requests options - might be configurable in the future
 	private $_timeout = 30;
