@@ -57,7 +57,7 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	 */
 	private function _getFilesTempPath($fileNames)
 	{
-		$paths = [];
+		$paths = array();
 		foreach( $options['files'] as $param => $file ) {
 			$paths[$param] = '@' . $file->getTempName();
 		}
@@ -81,16 +81,16 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 		$request = null;
 
 		//Define request options
-		$requestOptions = [
+		$requestOptions = array(
 			'timeout'         => $this->_timeout,
 			'connect_timeout' => $this->_connectionTimeout,
 			'allow_redirects' => $this->_allowRedirects,
-		];
+		);
 
 		//Request headers
-		$requestHeaders = [
+		$requestHeaders = array(
 			'X-Requested-With' => 'XMLHttpRequest',
-		];
+		);
 
 		if($method === 'post') {
 			$request = $client->post($url, $requestHeaders, $requestParams, $requestOptions);
@@ -121,7 +121,7 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 		$result = false;
 
 		//Extract parameters from options
-		$requestParams = ( isset($options['params']) ) ? $options['params'] : [];
+		$requestParams = ( isset($options['params']) ) ? $options['params'] : array();
 
 		//If there are any files, add them to the list of params
 		if( isset($options['files']) ) {
@@ -172,10 +172,10 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 		}
 
 		//Prepare the results
-		$result = [
+		$result = array(
 			'statusCode' => 0,
-			'body' => [],
-		];
+			'body' => array(),
+		);
 
 		//Check if we received a response
 		if( $responseReceived ) {
@@ -227,10 +227,10 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	 */
 	public function get($url, $params, $fromCache)
 	{
-		$options = [
+		$options = array(
 			'params' => $params,
 			'fromCache' => $fromCache,
-		];
+		);
 
 		return $this->_request('get', $url, $options);
 	}
@@ -240,12 +240,12 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	 */
 	public function post($url, $params, $files)
 	{
-		$options = [
+		$options = array(
 			'params' => $params,
 			'files' => $files,
 			//POST requests will never be cached
 			'fromCache' => false,
-		];
+		);
 
 		return $this->_request('post', $url, $options);
 	}

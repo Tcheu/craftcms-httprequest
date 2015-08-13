@@ -11,7 +11,7 @@ class HttpReqVariable
 	 *
 	 * @return object An object containing the status code, response body and error message if any.
 	 */
-	public function get($url, $params = [], $fromCache = true)
+	public function get($url, $params = array(), $fromCache = true)
 	{
 		$response = craft()->httpReq_restClient->get($url, $params, $fromCache);
 		return $response;
@@ -20,7 +20,7 @@ class HttpReqVariable
 	/**
 	 * Interface to the service's post method
 	 */
-	public function post($url, $params = [], $files = [])
+	public function post($url, $params = array(), $files = array())
 	{
 		$response = craft()->httpReq_restClient->post($url, $params, $files);
 		return $response;
@@ -31,7 +31,7 @@ class HttpReqVariable
 	 */
 	public function getParams($paramNames)
 	{
-		$params = [];
+		$params = array();
 		foreach($paramNames as $paramName) {
 			$params[$paramName] = craft()->request->getParam($paramName);
 		}
@@ -44,7 +44,7 @@ class HttpReqVariable
 	 */
 	public function getFiles($fieldNames)
 	{
-		$uploadedFiles = [];
+		$uploadedFiles = array();
 		foreach($fieldNames as $field) {
 			$file = UploadedFile::getInstanceByName($field);
 			if( $file !== null ) {
