@@ -1,6 +1,6 @@
 # HTTP Request plugin for Craft CMS
 
-Create and send HTTP requests and retrieve the response, in JSON or plain text.
+Create and send HTTP requests from templates and retrieve the response, in JSON or plain text.
 
 ## Installation
 
