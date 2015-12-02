@@ -8,7 +8,7 @@ class HttpReqPlugin extends BasePlugin
 	private $_developer = 'Tcheu!';
 	private $_developerUrl = 'http://tcheu.be';
 	private $_documentationUrl = 'https://github.com/Tcheu/craftcms-httprequest';
-	private $_releaseFeedUrl = 'https://github.com/Tcheu/craftcms-httprequest';
+	private $_releaseFeedUrl = 'https://raw.githubusercontent.com/Tcheu/craftcms-httprequest/master/releases.json';
 	private $_version = '1.1.0';
 
 	public function getName()
