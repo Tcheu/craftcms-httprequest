@@ -6,7 +6,7 @@ class HttpReqPlugin extends BasePlugin
 	private $_name = 'HTTP Request';
 	private $_developer = 'Tcheu!';
 	private $_developerUrl = 'http://tcheu.be';
-	private $_version = '1.0';
+	private $_version = '1.0.0';
 
 	public function getName()
 	{
