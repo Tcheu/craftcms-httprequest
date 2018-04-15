@@ -57,8 +57,12 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	 */
 	private function _getFilesTempPath($fileNames)
 	{
+	    if (!is_array($fileNames)) {
+	        return array();
+        }
+
 		$paths = array();
-		foreach( $options['files'] as $param => $file ) {
+		foreach ($fileNames as $param => $file) {
 			$paths[$param] = '@' . $file->getTempName();
 		}
 
@@ -71,10 +75,11 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	 * @param string $method The request's method (GET or POST)
 	 * @param string $url The URL to perform the request to
 	 * @param array $requestParams List of GET or POST parameters
+	 * @param array $options Additional options such as headers
 	 *
 	 * @return object
 	 */
-	private function _buildRequest($method, $url, $requestParams)
+	private function _buildRequest($method, $url, $requestParams, $options = array())
 	{
 		//Obtain Guzzle instance
 		$client = $this->_getClient();
@@ -91,6 +96,11 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 		$requestHeaders = array(
 			'X-Requested-With' => 'XMLHttpRequest',
 		);
+
+		//Check if we need to send additional headers
+        if (in_array('headers', array_keys($options))) {
+            $requestHeaders = array_merge($requestHeaders, $options['headers']);
+        }
 
 		if($method === 'post') {
 			$request = $client->post($url, $requestHeaders, $requestParams, $requestOptions);
@@ -151,7 +161,7 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 
 		try {
 			//Build the request
-			$request = $this->_buildRequest($method, $url, $requestParams);
+			$request = $this->_buildRequest($method, $url, $requestParams, $options);
 
 			//Potentially long-running request, so close session to prevent session blocking on subsequent requests.
 			craft()->session->close();
@@ -225,12 +235,15 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	/**
 	 * Shorthand method to create a get request
 	 */
-	public function get($url, $params, $fromCache)
+	public function get($url, $params, $fromCache, $additionalOptions = [])
 	{
 		$options = array(
 			'params' => $params,
 			'fromCache' => $fromCache,
 		);
+
+		//Merge with additional options
+        $options = array_merge($options, $additionalOptions);
 
 		return $this->_request('get', $url, $options);
 	}
@@ -238,7 +251,7 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 	/**
 	 * Shorthand method to create a post request
 	 */
-	public function post($url, $params, $files)
+	public function post($url, $params, $files, $additionalOptions)
 	{
 		$options = array(
 			'params' => $params,
@@ -246,6 +259,9 @@ class HttpReq_RestClientService extends BaseApplicationComponent
 			//POST requests will never be cached
 			'fromCache' => false,
 		);
+
+        //Merge with additional options
+        $options = array_merge($options, $additionalOptions);
 
 		return $this->_request('post', $url, $options);
 	}

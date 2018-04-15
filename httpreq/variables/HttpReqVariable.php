@@ -8,21 +8,22 @@ class HttpReqVariable
 	 * @param string $url URL of the resource to get
 	 * @param array $params Associative array containing all the parameters
 	 * @param boolean $noCache This will tell the system to get content from the cache
+	 * @param array $additionalOptions Allows to further modify the request (used e.g. to send custom headers)
 	 *
 	 * @return object An object containing the status code, response body and error message if any.
 	 */
-	public function get($url, $params = array(), $fromCache = true)
+	public function get($url, $params = array(), $fromCache = true, $additionalOptions = array())
 	{
-		$response = craft()->httpReq_restClient->get($url, $params, $fromCache);
+		$response = craft()->httpReq_restClient->get($url, $params, $fromCache, $additionalOptions);
 		return $response;
 	}
 
 	/**
 	 * Interface to the service's post method
 	 */
-	public function post($url, $params = array(), $files = array())
+	public function post($url, $params = array(), $files = array(), $additionalOptions = array())
 	{
-		$response = craft()->httpReq_restClient->post($url, $params, $files);
+		$response = craft()->httpReq_restClient->post($url, $params, $files, $additionalOptions);
 		return $response;
 	}
 
