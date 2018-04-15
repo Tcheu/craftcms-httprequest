@@ -22,6 +22,7 @@ Parameters:
 - url: Complete URL to which you want to send the request
 - params: Hash containing the parameters names and values
 - fromCache: Boolean to specify if the response should be fetch from cache. True by default.
+- additionalOptions: Optional array containing options to further modify the request. Currently only supports the addition of custom headers.
 
 Example:
 
@@ -35,6 +36,14 @@ This code will try to make a GET request to http://domain.com/api/test?lang=fr w
 		"erro": "Contains the error message, if any"
 	}
 
+In order to insert custom headers in the request, use the additional options array. Example:
+
+    craft.httpReq.get('http://domain.com/api/test', { "lang" : "fr" }, false, {
+        headers: {
+            "X-Custom-Header": "foo"
+        }
+    })
+
 ### post
 
 Sends a POST request to the specified endpoint.
@@ -45,6 +54,7 @@ Parameters:
 - url: Complete URL to which you want to send the request
 - params: Hash containing the parameters names and values
 - files: A hash containing file input names and their corresponding handles.
+- additionalOptions: Optional array containing options to further modify the request. Currently only supports the addition of custom headers.
 
 Example:
 

@@ -14,5 +14,13 @@
     "notes": [
       "[Added] Support for Craft 2.5 new plugin features."
     ]
+  },
+  {
+    "version": "1.2.0",
+    "downloadUrl": "https://github.com/Tcheu/craftcms-httprequest/archive/v1.2.0.zip",
+    "date": "2018-04-15T00:00:00+01:00",
+    "notes": [
+      "[Added] Ability to send custom headers."
+    ]
   }
 ]
