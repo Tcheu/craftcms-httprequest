@@ -1,3 +1,5 @@
+**Craft 3 version:** There won't be a Craft 3 port of this plugin, as the [Craft Fetch plugin](https://github.com/lukeyouell/craft-fetch), available for Craft 3, provides a similar list of features.
+
 # HTTP Request plugin for Craft CMS
 
 Create and send HTTP requests from templates and retrieve the response, in JSON or plain text.
