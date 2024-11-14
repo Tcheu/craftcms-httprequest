@@ -28,23 +28,29 @@ Parameters:
 
 Example:
 
-	craft.httpReq.get('http://domain.com/api/test', { "lang" : "fr" }, false)
+```twig
+{% craft.httpReq.get('http://domain.com/api/test', { "lang" : "fr" }, false) %}
+```
 
 This code will try to make a GET request to http://domain.com/api/test?lang=fr without trying to get the response from cache.
 
-	{
-		"statusCode": 200,
-		"body": (parsed JSON object),
-		"erro": "Contains the error message, if any"
-	}
+```json
+{
+	"statusCode": 200,
+	"body": (parsed JSON object),
+	"erro": "Contains the error message, if any"
+}
+```
 
 In order to insert custom headers in the request, use the additional options array. Example:
 
-    craft.httpReq.get('http://domain.com/api/test', { "lang" : "fr" }, false, {
-        headers: {
-            "X-Custom-Header": "foo"
-        }
-    })
+```twig
+{% craft.httpReq.get('http://domain.com/api/test', { "lang" : "fr" }, false, {
+headers: {
+    "X-Custom-Header": "foo"
+}
+}) %}
+```
 
 ### post
 
@@ -60,17 +66,21 @@ Parameters:
 
 Example:
 
-	craft.httpReq.post('http://domain.com/api/test', { "fname" : "John", "lname" : "Doe" }, { "cv": (UploadFile) })
+```twig
+{% craft.httpReq.post('http://domain.com/api/test', { "fname" : "John", "lname" : "Doe" }, { "cv": (UploadFile) }) %}
+```
 
 This code will try to make a POST request to http://domain.com/api/test with the following parameters encoded using multipart/form-data: fname, lname, cv. The value for the CV parameter is the content of the file.
 
 Return value:
 
-	{
-		"statusCode": 200,
-		"body": (parsed JSON object),
-		"erro": "Contains the error message, if any"
-	}
+```json
+{
+	"statusCode": 200,
+	"body": (parsed JSON object),
+	"erro": "Contains the error message, if any"
+}
+```
 
 ### setCacheTtl
 
@@ -82,7 +92,9 @@ Parameters:
 
 Example:
 
-	craft.httpReq.setCacheTtl(60)
+```twig
+{% craft.httpReq.setCacheTtl(60) %}
+```
 
 This will define a cache validity time of 1 minute for all further requests.
 
@@ -96,11 +108,15 @@ Parameters:
 
 Example:
 
-	craft.httpReq.getParams(['fname','lname'])
+```twig
+{% craft.httpReq.getParams(['fname','lname']) %}
+```
 
 Return value:
 
-	{ "fname": "John", "lname": "Doe" }
+```json
+{ "fname": "John", "lname": "Doe" }
+```
 
 ### getFiles
 
@@ -112,11 +128,15 @@ Parameters:
 
 Example:
 
-	craft.httpReq.getFiles(['cv'])
+```twig
+{% craft.httpReq.getFiles(['cv']) %}
+```
 
 Return value:
 
-	{ "cv": (UploadFile) }
+```json
+{ "cv": (UploadFile) }
+```
 
 ## Cache
 
